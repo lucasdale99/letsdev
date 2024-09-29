@@ -38,7 +38,6 @@ const timelineData: TimelineItem[] = [
 ];
 
 export const Timeline: React.FC = () => {
-  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <div>
@@ -49,9 +48,6 @@ export const Timeline: React.FC = () => {
           year={item.year}
           content={item.content}
           expandedContent={item.expandedContent}
-          isExpanded={expanded === index}
-          onHover={() => setExpanded(index)}
-          onHoverLeave={() => setExpanded(null)}
         />
       ))}
     </div>
