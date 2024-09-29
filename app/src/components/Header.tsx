@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
-import logo from "../app/public/favicon-32x32.png";
+import logo from "../../public/favicon-16x16.png";
 
 export default function Header() {
   return (
