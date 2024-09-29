@@ -1,7 +1,9 @@
+import { ThemeToggle } from "./ThemeToggle";
+
 export default function Header() {
   return (
-    <div className="flex flex-col gap-16 items-center">
-
-    </div>
+    <nav className="w-full flex justify-end items-center border-b border-b-foreground/10 h-16 p-5">
+      <ThemeToggle />
+    </nav>
   );
 }
