@@ -13,7 +13,7 @@ export const TimelineCard: React.FC<TimelineCardProps> = ({
 }) => {
   return (
     <div
-      className={`p-5 relative flex items-center h-40 transition-all duration-300 ease-in-out cursor-pointer`}
+      className={`p-5 relative flex items-center h-40 transition-all duration-300 ease-in-out cursor-pointer ring-2 rounded-lg my-10`}
     >
       <div className={`p-4 rounded-lg`}>
         <h2 className="font-bold w-60">{company}</h2>

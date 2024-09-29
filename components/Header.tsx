@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import Image from "next/image";
+import logo from "../app/public/favicon-32x32.png";
 
 export default function Header() {
   return (
     <nav className="w-full flex justify-end items-center border-b border-b-foreground/10 h-16 p-5 gap-8">
-      <ol className="w-full flex justify-between">
+      <ol className="w-full flex items-center justify-between">
         <li>
-          <Link href="/">Let's Dev</Link>
+          <Link className="flex items-center gap-4" href="/">
+            <Image src={logo} alt="Let's Dev Logo"></Image>
+            Let's Dev
+          </Link>
         </li>
         <li>
           <Link href="/blog">Blog</Link>
