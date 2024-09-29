@@ -39,7 +39,7 @@ const timelineData: TimelineItem[] = [
 
 export const Timeline: React.FC = () => {
   return (
-    <div className="rounded-lg">
+    <div>
       {timelineData.map((item, index) => (
         <TimelineCard
           key={index}
