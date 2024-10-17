@@ -4,13 +4,13 @@ import { ThemeProvider } from "next-themes";
 import Head from "next/head";
 import Header from "./components/Header";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const defaultUrl = process.env.URL
+  ? `https://${process.env.URL}`
   : "http://localhost:3000";
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Let's Dev",
+  title: "Let Us Dev",
   description: "A simple demonstration of my skill set.",
 };
 
