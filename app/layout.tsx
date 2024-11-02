@@ -1,17 +1,28 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Head from "next/head";
-import Header from "./components/Header";
+import Navbar from "../components/Navbar";
+import type { Metadata, Viewport } from "next";
 
-const defaultUrl = process.env.URL
-  ? `https://${process.env.URL}`
-  : "http://localhost:3000";
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
 
-export const metadata = {
-  metadataBase: new URL(defaultUrl),
+export const metadata: Metadata = {
   title: "Let Us Dev",
   description: "A simple demonstration of my skill set.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+  other: {
+    "msapplication-TileColor": "#da532c",
+  },
 };
 
 export default function RootLayout({
@@ -20,42 +31,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
-      <body className="bg-background text-foreground">
+    <html lang="en" suppressHydrationWarning>
+      <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="theme-mode"
         >
           <main className="min-h-screen min-w-screen flex flex-col">
-            <Header />
+            <Navbar />
             {children}
           </main>
+          <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs"></footer>
         </ThemeProvider>
       </body>
     </html>
