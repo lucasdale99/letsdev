@@ -3,7 +3,7 @@ import Image from "next/image";
 import Me from "@/public/me.png";
 import BlogList from "@/components/BlogList";
 import { TimelineList } from "@/components/TimelineList";
-import { AnimatedDescription } from "@/components/animatedDescription";
+import { AnimatedDescription } from "@/components/AnimatedDescription";
 
 export default async function Index() {
   const descriptions = [

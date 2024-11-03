@@ -3,6 +3,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/favicon-16x16.png";
+import { SocialIcons } from "./SocialIcons";
 
 export default function Header() {
   return (
@@ -14,8 +15,11 @@ export default function Header() {
             Let's Dev
           </Link>
         </li>
+        <li className="flex items-center gap-4">
+          <SocialIcons />
+          <ThemeToggle />
+        </li>
       </ol>
-      <ThemeToggle />
     </nav>
   );
 }

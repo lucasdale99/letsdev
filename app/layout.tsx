@@ -9,7 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Let Us Dev",
+  title: "Let's Dev",
   description: "A simple demonstration of my skill set.",
   icons: {
     icon: [
@@ -40,11 +40,13 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme-mode"
         >
-          <main className="min-h-screen min-w-screen flex flex-col">
+          <div className="min-h-screen flex flex-col">
             <Navbar />
-            {children}
-          </main>
-          <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs"></footer>
+            <main className="flex-1">{children}</main>
+            <footer className="w-full border-t border-t-foreground/10 p-8 flex justify-center text-center text-xs">
+              {/* footer content */}
+            </footer>
+          </div>
         </ThemeProvider>
       </body>
     </html>
