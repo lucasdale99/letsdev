@@ -12,29 +12,33 @@ const timelineData: TimelineItem[] = [
   {
     company: "McKee Foods",
     year: "2019 - 2021",
-    content: "FSO Help Intern",
-    expandedContent: "Detailed info for 2019, 2020, and 2021...",
+    content: "FSO Help Intern / Software Engineer Intern",
+    expandedContent:
+      "From May 2019 to January 2020, I worked as an IT intern, then transitioned to a software engineer intern.",
     slug: "mckee-foods",
   },
   {
     company: "Cracker Barrel",
     year: "2021 - 2022",
     content: "Full Stack Engineer",
-    expandedContent: "Detailed info for 2021 and 2022...",
+    expandedContent:
+      "At Crackerbarrel, I worked on the PWA React app for Crackerbarrel's mobile app and website.",
     slug: "cracker-barrel",
   },
   {
     company: "Datably",
     year: "2022 - 2023",
     content: "Software Engineer",
-    expandedContent: "Detailed info for 2022 and 2023...",
+    expandedContent:
+      "At Datably, a startup in Chattanooga, I worked on multiple applications ranging from Church mobile apps to enterprise dashboards.",
     slug: "datably",
   },
   {
     company: "Clayton Homes",
     year: "2024 - Present",
     content: "Software Engineer",
-    expandedContent: "Detailed info for 2024...",
+    expandedContent:
+      "At Clayton Homes, I'm working on VMFHomes, a used Manufactured Home websites, and some other enterprise software.",
     slug: "clayton-homes",
   },
 ];

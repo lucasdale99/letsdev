@@ -19,6 +19,13 @@ const config = {
     },
     extend: {
       colors: {
+        gold: {
+          DEFAULT: "#FFD700",
+          glow: "rgba(255, 215, 0, 0.3)",
+        },
+        boxShadow: {
+          gold: "0 0 15px rgba(255, 215, 0, 0.3)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

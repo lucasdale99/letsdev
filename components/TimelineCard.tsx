@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardHeader } from "./ui/card";
 
 interface TimelineCardProps {
   company: string;
@@ -18,18 +18,14 @@ export const TimelineCard: React.FC<TimelineCardProps> = ({
 }) => {
   return (
     <Link key={slug} href={`/experience/${slug}`}>
-      <Card className="my-4 hover:ring-primary transition-all duration-300 ease-in-out cursor-pointer ring-2 rounded-lg">
-        <CardContent className="p-6">
-          <div className="flex justify-between items-start gap-6">
-            <div className="flex-1 space-y-3">
-              <h3 className="font-bold text-xl">{company}</h3>
-              <p className="text-muted-foreground">{content}</p>
-              <p className="text-sm text-muted-foreground/80">
-                {expandedContent}
-              </p>
-            </div>
-            <div className="text-lg font-semibold text-primary">{year}</div>
-          </div>
+      <Card className="p-6 my-4 hover:ring-gold gap-2 hover:shadow-gold transition-all duration-300 ease-in-out cursor-pointer ring-2 rounded-lg">
+        <CardHeader className="p-0 flex flex-row justify-between items-center">
+          <h3 className="font-bold text-xl">{company}</h3>
+          <span className="text-muted-foreground">{year}</span>
+        </CardHeader>
+        <CardContent className="p-0 flex flex-col gap-2 justify-between">
+          <p className="text-muted-foreground">{content}</p>
+          <p className="text-muted-foreground text-sm">{expandedContent}</p>
         </CardContent>
       </Card>
     </Link>
