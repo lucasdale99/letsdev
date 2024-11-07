@@ -3,13 +3,14 @@ import listOfBlogs from "@/data/blog";
 
 export default function BlogList() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       {listOfBlogs.map((blog, index) => (
         <BlogCard
           key={index}
           title={blog.title}
+          category={blog.category}
           description={blog.description}
-          link={blog.link}
+          link={blog.slug}
           index={index}
         />
       ))}

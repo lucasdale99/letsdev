@@ -3,20 +3,24 @@
 export default $config({
   app(input) {
     return {
-      name: "portfolio",
+      name: "letusdev",
       removal: input?.stage === "production" ? "retain" : "remove",
       home: "aws",
+      region: "us-east-1",
     };
   },
   async run() {
-    new sst.aws.Nextjs("LucasPortfolio", {
+    const database_url = new sst.Secret("DATABASE_URL");
+    new sst.aws.Nextjs("letusdev", {
+      environment: {
+        DATABASE_URL: database_url.value,
+      },
       domain: {
         name: "letusdev.io",
         dns: sst.aws.dns({
-          zone: "Z0600725332UFN0OF4ISC"
+          zone: "Z0600725332UFN0OF4ISC",
         }),
-      }
+      },
     });
-   
   },
 });

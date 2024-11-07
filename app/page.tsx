@@ -1,20 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import Me from "@/public/me.png";
-import BlogList from "@/components/BlogList";
 import { TimelineList } from "@/components/TimelineList";
 import { AnimatedDescription } from "@/components/AnimatedDescription";
-
+import BlogList from "@/components/BlogList";
 export default async function Index() {
   const descriptions = [
     "Father of Two",
     "Bond servant of Christ",
     "Husband",
     "Developer",
-    "Coffee Addict",
+    "Coffee Fiend",
     "Disc Golfer",
     "Pickleball Player",
     "Skateboarder",
+    "Audio Book Listener",
   ];
 
   return (
@@ -44,12 +44,12 @@ export default async function Index() {
       <div className="w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col space-y-4">
-            <h1 className="text-4xl font-bold">Blog</h1>
+            <h1 className="text-3xl font-bold">Blog</h1>
             <BlogList />
           </div>
 
           <div className="flex flex-col space-y-4">
-            <h1 className="text-4xl font-bold">My Experience</h1>
+            <h1 className="text-3xl font-bold">My Experience</h1>
             <TimelineList />
           </div>
         </div>

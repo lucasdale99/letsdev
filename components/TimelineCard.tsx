@@ -5,27 +5,24 @@ interface TimelineCardProps {
   company: string;
   year: string;
   content: string;
-  expandedContent: string;
-  slug: string;
 }
 
 export const TimelineCard: React.FC<TimelineCardProps> = ({
   company,
   year,
   content,
-  expandedContent,
-  slug,
 }) => {
   return (
-    <Link key={slug} href={`/experience/${slug}`}>
-      <Card className="p-6 my-4 hover:ring-gold gap-2 hover:shadow-gold transition-all duration-300 ease-in-out cursor-pointer ring-2 rounded-lg">
+    <Link href={`/experience#${company.toLowerCase().replace(/\s+/g, "-")}`}>
+      <Card className="p-6 my-4 transition-all duration-300 ease-in-out cursor-pointer">
         <CardHeader className="p-0 flex flex-row justify-between items-center">
-          <h3 className="font-bold text-xl">{company}</h3>
-          <span className="text-muted-foreground">{year}</span>
+          <h3 className="text-xl font-bold">{company}</h3>
+          <span className="text-xs text-muted-foreground">{year}</span>
         </CardHeader>
-        <CardContent className="p-0 flex flex-col gap-2 justify-between">
-          <p className="text-muted-foreground">{content}</p>
-          <p className="text-muted-foreground text-sm">{expandedContent}</p>
+        <CardContent className="p-0 mt-2">
+          <p className="text-sm text-muted-foreground overflow-hidden line-clamp-2">
+            {content}
+          </p>
         </CardContent>
       </Card>
     </Link>

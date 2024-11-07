@@ -6,7 +6,11 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "LucasPortfolio": {
+    "DATABASE_URL": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "letusdev": {
       "type": "sst.aws.Nextjs"
       "url": string
     }

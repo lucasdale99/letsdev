@@ -1,0 +1,1 @@
+ALTER TABLE "blogs_table" ADD COLUMN "category" text NOT NULL;
