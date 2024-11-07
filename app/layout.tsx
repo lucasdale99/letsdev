@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Let's Dev",
-  description: "A simple demonstration of my skill set.",
+  description: "A look at Lucas Dale",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
