@@ -1,0 +1,1 @@
+ALTER TABLE "blogs_table" ADD COLUMN "description" text NOT NULL;
