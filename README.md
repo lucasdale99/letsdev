@@ -7,3 +7,4 @@
 - [SST Docs](https://sst.dev/docs/)
 - [Drizzle Docs](https://orm.drizzle.team/docs/get-started-postgresql)
 - [Neon Docs](https://neon.tech/docs/introduction)
+- [Next.js Docs](https://nextjs.org/docs)
