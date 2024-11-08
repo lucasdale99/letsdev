@@ -11,9 +11,11 @@ export default $config({
   },
   async run() {
     const database_url = new sst.Secret("DATABASE_URL");
+    const next_public_url = new sst.Secret("NEXT_PUBLIC_URL");
     new sst.aws.Nextjs("letusdev", {
       environment: {
         DATABASE_URL: database_url.value,
+        NEXT_PUBLIC_URL: next_public_url.value,
       },
       domain: {
         name: "letusdev.io",

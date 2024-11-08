@@ -2,7 +2,7 @@ import { IBlogList } from "@/lib/types";
 import BlogCard from "./BlogCard";
 
 export default async function BlogList() {
-  const data = await fetch("http://localhost:3000/api/blog");
+  const data = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blog`);
   const blogs = await data.json();
 
   return (
