@@ -13,5 +13,4 @@ export const blogsTable = pgTable("blogs_table", {
     .$onUpdate(() => new Date()),
 });
 
-export type InsertBlog = typeof blogsTable.$inferInsert;
 export type SelectBlog = typeof blogsTable.$inferSelect;

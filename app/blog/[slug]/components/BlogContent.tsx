@@ -8,21 +8,18 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import listOfBlogs from "@/data/blog";
 import { capitalizeAndRemoveDashes } from "@/utils/capitilizeLinks";
 import { Home } from "lucide-react";
-import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { motion, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface BlogParams {
-  params: {
-    slug: string;
-  };
+interface BlogContentProps {
+  content: string;
+  slug: string;
 }
 
-export default function BlogPost({ params }: BlogParams) {
+export default function BlogContent({ content, slug }: BlogContentProps) {
   const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
 
@@ -35,12 +32,6 @@ export default function BlogPost({ params }: BlogParams) {
       scrollYProgress.onChange((v) => console.log("Scroll progress:", v));
     }
   }, [mounted, scrollYProgress]);
-
-  const blog = listOfBlogs.find((blog) => blog.slug === `/${params.slug}`);
-
-  if (!blog) {
-    return notFound();
-  }
 
   return (
     <>
@@ -66,8 +57,12 @@ export default function BlogPost({ params }: BlogParams) {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
+              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
               <BreadcrumbPage>
-                {capitalizeAndRemoveDashes(params.slug.toString())}
+                {capitalizeAndRemoveDashes(slug.toString())}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
@@ -92,7 +87,7 @@ export default function BlogPost({ params }: BlogParams) {
             ),
           }}
         >
-          {blog?.content}
+          {content}
         </ReactMarkdown>
       </div>
     </>

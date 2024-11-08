@@ -5,7 +5,7 @@ interface BlogCardProps {
   title: string;
   category: string;
   description: string;
-  link: string;
+  slug: string;
   index: number;
 }
 
@@ -13,11 +13,10 @@ export default function BlogCard({
   title,
   category,
   description,
-  link,
-  index,
+  slug,
 }: BlogCardProps) {
   return (
-    <Link key={index} href={link}>
+    <Link href={`/blog/${slug}`}>
       <Card className="p-6 my-4 transition-all duration-300 ease-in-out cursor-pointer">
         <CardHeader className="p-0 text-xl font-bold gap-2">
           {title}

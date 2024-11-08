@@ -1,16 +1,19 @@
+import { IBlogList } from "@/lib/types";
 import BlogCard from "./BlogCard";
-import listOfBlogs from "@/data/blog";
 
-export default function BlogList() {
+export default async function BlogList() {
+  const data = await fetch("http://localhost:3000/api/blog");
+  const blogs = await data.json();
+
   return (
     <div className="flex flex-col">
-      {listOfBlogs.map((blog, index) => (
+      {blogs?.data?.map((blog: IBlogList, index: number) => (
         <BlogCard
-          key={index}
+          key={blog.id}
           title={blog.title}
           category={blog.category}
           description={blog.description}
-          link={blog.slug}
+          slug={blog.slug}
           index={index}
         />
       ))}
