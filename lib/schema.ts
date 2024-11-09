@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, uuid, text, timestamp } from "drizzle-orm/pg-core";
 
 export const blogsTable = pgTable("blogs_table", {
   id: serial("id").primaryKey().notNull(),
@@ -13,4 +13,12 @@ export const blogsTable = pgTable("blogs_table", {
     .$onUpdate(() => new Date()),
 });
 
+export const subscribersTable = pgTable("subscribers_table", {
+  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  email: text("email").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  deletedAt: timestamp("deleted_at"),
+});
+
 export type SelectBlog = typeof blogsTable.$inferSelect;
+export type InsertSubscriber = typeof subscribersTable.$inferInsert;

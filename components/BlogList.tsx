@@ -17,7 +17,6 @@ export default async function BlogList() {
       <div className="flex flex-col">
         {blogs.data?.map((blog: IBlogList, index: number) => (
           <BlogCard
-            key={blog.id}
             title={blog.title}
             category={blog.category}
             description={blog.description}

@@ -14,9 +14,10 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "letusdev": {
-      "type": "sst.aws.Nextjs"
-      "url": string
+    "letusdev.io": {
+      "configSet": string
+      "sender": string
+      "type": "sst.aws.Email"
     }
   }
 }
