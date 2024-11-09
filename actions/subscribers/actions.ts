@@ -4,7 +4,7 @@ import { parseWithZod } from "@conform-to/zod";
 import { SubscriberForm, subscriberSchema } from "./subscriber.schema";
 import { db } from "@/lib/db";
 import { mail } from "@/utils/email";
-import Subscribed from "@/email/Subscribed";
+import Subscribed from "@/email/subscribed";
 import { subscribersTable } from "@/lib/schema";
 
 export async function save(email: SubscriberForm) {

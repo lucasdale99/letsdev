@@ -11,11 +11,12 @@ import {
   Section,
   Row,
   Column,
+  Link,
   Body,
   Preview,
 } from "@react-email/components";
 import config from "../tailwind.config";
-import Subscribed from "./Subscribed";
+import Subscribed from "./subscribed";
 
 export const url = (route: string): string => {
   let base = process.env.URL ?? "";
@@ -44,7 +45,7 @@ export const EmailWrapper = ({ children, preview, external = true }: any) => {
               {external && (
                 <>
                   <div>
-                    <Text className="font-extrabold text-xl">Strukt</Text>
+                    <Text className="font-extrabold text-xl">Let's Dev</Text>
                   </div>
                   <Hr />
                 </>
@@ -53,9 +54,14 @@ export const EmailWrapper = ({ children, preview, external = true }: any) => {
               {external && (
                 <>
                   <Hr />
-                  <Text className="text-gray-400 text-xs leading-4">
-                    Strukt, Shelbyville, TN 37160
-                  </Text>
+                  <Link
+                    href={url("https://letusdev.io/unsubscribe")}
+                    className="flex justify-end items-center"
+                  >
+                    <Text className="text-gray-400 text-xs leading-4 underline">
+                      Unsubscribe
+                    </Text>
+                  </Link>
                 </>
               )}
             </Section>
