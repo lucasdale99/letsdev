@@ -6,5 +6,22 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
+    "DATABASE_URL": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "NEXT_PUBLIC_URL": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
+    "letusdev": {
+      "type": "sst.aws.Nextjs"
+      "url": string
+    }
+    "lucas@strukt.io": {
+      "configSet": string
+      "sender": string
+      "type": "sst.aws.Email"
+    }
   }
 }

@@ -3,10 +3,9 @@ import { Card, CardContent, CardHeader } from "./ui/card";
 
 interface BlogCardProps {
   title: string;
-  category: string;
+  category?: string;
   description: string;
   slug: string;
-  index: number;
 }
 
 export default function BlogCard({
@@ -20,9 +19,11 @@ export default function BlogCard({
       <Card className="p-6 my-4 transition-all duration-300 ease-in-out cursor-pointer">
         <CardHeader className="p-0 text-xl font-bold gap-2">
           {title}
-          <span className="text-xs text-muted-foreground">
-            {category.toUpperCase()}
-          </span>
+          {category ? (
+            <span className="text-xs text-muted-foreground">
+              {category.toUpperCase()}
+            </span>
+          ) : null}
         </CardHeader>
         <CardContent className="p-0 text-sm mt-2">
           <p className="text-muted-foreground">{description}</p>

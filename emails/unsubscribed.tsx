@@ -14,15 +14,14 @@ import {
 import * as React from "react";
 import { EmailWrapper, url } from ".";
 
-const Subscribed: React.FC = () => {
+const Unsubscribed: React.FC = () => {
   return (
-    <EmailWrapper preview="Thanks for subscribing!">
+    <EmailWrapper preview="Sorry to see you go!">
       <Text className="text-gray-600 text-sm leading-6 text-left">
-        Congrats! You're now subscribed to my newsletter! When I post an update,
-        you'll be notified.
+        Sorry to see you go! Thanks for being a part of my passion project.
       </Text>
       <Text className="text-gray-600 text-sm leading-6 text-left">
-        Thanks for reading and being a part of my passion project.
+        If you have any feedback, please let me know!
       </Text>
       <Text className="text-gray-600 text-sm leading-6 text-left">Cheers,</Text>
       <Text className="text-gray-600 text-sm leading-6 text-left">
@@ -32,4 +31,4 @@ const Subscribed: React.FC = () => {
   );
 };
 
-export default Subscribed;
+export default Unsubscribed;

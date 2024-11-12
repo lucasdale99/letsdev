@@ -8,11 +8,11 @@ import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRef } from "react";
-import { isLocal } from "@/utils/isLocal";
 import { subscriberSchema } from "@/actions/subscribers/subscriber.schema";
+import { motion } from "framer-motion";
 
 export default function SubscriberForm() {
-  const [lastResult, action] = useFormState(addSubscriber, undefined);
+  const [state, action] = useFormState(addSubscriber, undefined);
   const ref = useRef<HTMLFormElement>(null);
 
   const example = {
@@ -20,8 +20,8 @@ export default function SubscriberForm() {
   };
 
   const [form, fields] = useForm({
-    lastResult,
-    defaultValue: isLocal() ? example : example,
+    lastResult: state,
+    defaultValue: example,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: subscriberSchema });
     },
@@ -31,8 +31,8 @@ export default function SubscriberForm() {
   });
 
   return (
-    <div className="flex justify-center">
-      <Card className="p-8 my-12 bg-zinc-900/50 border border-zinc-800">
+    <div className="flex flex-col justify-center">
+      <Card className="p-8 my-12 bg-zinc-900/50 border border-blue-500/20">
         <div className="flex flex-col gap-4 max-w-xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-zinc-100">
             Subscribe to My Newsletter
@@ -70,6 +70,16 @@ export default function SubscriberForm() {
             unsubscribe at any time.
           </p>
         </div>
+        <p>{fields.email.errors}</p>
+        {state?.status === "error" && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex flex-col items-center text-sm text-red-500 mt-2"
+          >
+            {"message" in state ? state.message : null}
+          </motion.p>
+        )}
       </Card>
     </div>
   );

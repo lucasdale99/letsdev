@@ -17,7 +17,7 @@ import {
 } from "@react-email/components";
 import config from "../tailwind.config";
 import Subscribed from "./subscribed";
-
+import Unsubscribed from "./unsubscribed";
 export const url = (route: string): string => {
   let base = process.env.URL ?? "";
   return `${base}${route}`;
@@ -93,4 +93,4 @@ export const List = ({ data }: { data: object }) => {
   );
 };
 
-export { Subscribed };
+export { Subscribed, Unsubscribed };

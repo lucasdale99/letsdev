@@ -4,6 +4,8 @@ import Me from "@/public/me.png";
 import { TimelineList } from "@/components/TimelineList";
 import { AnimatedDescription } from "@/components/AnimatedDescription";
 import BlogList from "@/components/BlogList";
+import { Card } from "@/components/ui/card";
+import BlogCard from "@/components/BlogCard";
 export default async function Index() {
   const descriptions = [
     "Father of Two",
@@ -45,7 +47,11 @@ export default async function Index() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex flex-col space-y-4">
             <h1 className="text-3xl font-bold">Blog</h1>
-            <BlogList />
+            <BlogCard
+              title="Check out my list of blogs"
+              description="I'll be posting about my personal life, professional experiences, and things I'm learning. These will range from being a Christ follower, my experiences as a father, and entrepreneur. I'll also post about the tech I'm interested in."
+              slug=""
+            />
           </div>
 
           <div className="flex flex-col space-y-4">
