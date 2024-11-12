@@ -10,7 +10,7 @@ export default $config({
     };
   },
   async run() {
-    new sst.aws.Email("lucas@strukt.io", {
+    const email = new sst.aws.Email("MyEmail", {
       sender: "lucas@strukt.io",
     });
     const database_url = new sst.Secret("DATABASE_URL");
