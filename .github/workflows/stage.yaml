@@ -44,7 +44,7 @@ jobs:
 
       - name: Run staging DB Migrations
         run: |
-          STAGE=staging tsx cli/migrator.ts
+          STAGE=staging npx tsx cli/migrator.ts
 
       - name: Deploy with SST
         run: pnpm run deploy:stage
