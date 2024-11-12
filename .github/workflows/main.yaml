@@ -38,7 +38,7 @@ jobs:
 
       - name: Set SST Config Secret
         run: |
-          npx sst secret set COMMIT_SHA=${{ github.sha }} --stage production
+          npx sst secret set COMMIT_SHA ${{ github.sha }} --stage production
 
       - name: Deploy with SST
         run: pnpm run deploy
