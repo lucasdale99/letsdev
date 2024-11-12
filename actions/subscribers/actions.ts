@@ -88,9 +88,8 @@ export async function addSubscriber(prevState: unknown, formData: FormData) {
         email: submission.value.email,
       },
     });
-  } else {
-    return result;
   }
+  return result;
 }
 
 export async function removeSubscriber(prevState: unknown, formData: FormData) {

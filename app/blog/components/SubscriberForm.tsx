@@ -70,7 +70,15 @@ export default function SubscriberForm() {
             unsubscribe at any time.
           </p>
         </div>
-        <p>{fields.email.errors}</p>
+        {state?.status === "success" && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex flex-col items-center text-sm text-green-500 mt-2"
+          >
+            Successfully subscribed!
+          </motion.p>
+        )}
         {state?.status === "error" && (
           <motion.p
             initial={{ opacity: 0 }}

@@ -92,6 +92,15 @@ export default function Unsubscribe() {
               </>
             )}
           </div>
+          {state?.status === "success" && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center text-sm text-green-500 mt-2"
+            >
+              Successfully unsubscribed!
+            </motion.p>
+          )}
           {state?.status === "error" && (
             <motion.p
               initial={{ opacity: 0 }}
