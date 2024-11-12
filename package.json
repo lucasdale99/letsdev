@@ -6,6 +6,8 @@
     "dev": "next dev",
     "start": "next start",
     "deploy": "sst deploy --stage production",
+    "migrate": "tsx cli/migrator.ts",
+    "deploy:stage": "sst deploy --stage staging",
     "takeDown": "npx sst remove --stage production",
     "generate": "npx drizzle-kit generate",
     "db": "sst shell drizzle-kit"
@@ -49,6 +51,7 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
+    "@types/ws": "^8.5.13",
     "aws-cdk-lib": "2.142.1",
     "drizzle-kit": "^0.27.1",
     "tsx": "^4.19.2"
