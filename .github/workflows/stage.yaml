@@ -19,7 +19,7 @@ jobs:
             .next/
             .open-next/
             .sst/
-          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles("**.[jt]s', '**.[jt]xs', ) }}
+          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]xs') }}
           restore-keys: |
             cache-${{ hashFiles('**/pnpm-lock.yaml') }}
 
