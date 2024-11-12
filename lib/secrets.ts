@@ -1,11 +1,11 @@
 import { GetParameterCommand, SSMClient } from "@aws-sdk/client-ssm";
 
 //Grab Secrets from AWS Parameter Store
-const STAGE = "production";
+const STAGE = process.env.STAGE ? process.env.STAGE : "production";
 const PROJECT = "letusdev";
 const REGION = "us-east-1";
 
-export async function getSecret(secretName: string) {
+export default async function getSecret(secretName: string) {
   if (!secretName) {
     throw new Error("Secret name is required");
   }

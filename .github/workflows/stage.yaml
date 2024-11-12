@@ -1,4 +1,4 @@
-name: One-off Deploy
+name: Stage Deploy via SST
 
 on:
   workflow_dispatch:
@@ -38,10 +38,16 @@ jobs:
 
       - name: Set SST Config Secret
         run: |
-          npx sst secrets set COMMIT_SHA=${{ github.sha }} --stage production
+          npx sst secrets set DATABASE_URL=${{ secrets.DATABASE_URL_STAGING }} --stage staging
+          npx sst secrets set NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL_STAGING }} --stage staging
+          npx sst secrets set COMMIT_SHA=${{ github.sha }} --stage staging
+
+      - name: Run staging DB Migrations
+        run: |
+          STAGE=staging npx tsx cli/migrator.ts
 
       - name: Deploy with SST
-        run: pnpm run deploy
+        run: pnpm run deploy:stage
 
       - name: Clean up AWS Profile
         run: rm -rf ~/.aws
