@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import BlogContent from "./components/BlogContent";
+import SubscriberForm from "../components/SubscriberForm";
 
 interface BlogParams {
   params: {
@@ -24,5 +25,12 @@ export default async function BlogPost({ params }: BlogParams) {
     return notFound();
   }
 
-  return <BlogContent content={blogData.data.content} slug={params.slug} />;
+  return (
+    <>
+      <BlogContent content={blogData.data.content} slug={params.slug} />
+      <div className="flex-1 w-full max-w-4xl mx-auto p-6">
+        <SubscriberForm />
+      </div>
+    </>
+  );
 }

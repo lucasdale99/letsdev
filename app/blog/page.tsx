@@ -8,6 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Home } from "lucide-react";
+import SubscriberForm from "./components/SubscriberForm";
 
 export default function Blog() {
   return (
@@ -26,6 +27,7 @@ export default function Blog() {
         </BreadcrumbList>
       </Breadcrumb>
       <BlogList />
+      <SubscriberForm />
     </div>
   );
 }

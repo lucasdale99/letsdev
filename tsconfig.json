@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["./node_modules/@types"],
     "plugins": [
       {
         "name": "next"
@@ -31,8 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "next.config.js",
-    "types/awesomeKit.d.ts"
+    "next.config.js"
   ],
   "exclude": ["node_modules", "sst.config.ts"]
 }

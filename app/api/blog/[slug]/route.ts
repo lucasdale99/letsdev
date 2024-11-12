@@ -15,8 +15,6 @@ export async function GET(
       .from(blogsTable)
       .where(eq(blogsTable.slug, `/${incomingSlug}`));
 
-    console.log(blogData[0], "BLOG DATA");
-
     if (!blogData.length) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }

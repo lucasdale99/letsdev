@@ -17,12 +17,11 @@ export default async function BlogList() {
       <div className="flex flex-col">
         {blogs.data?.map((blog: IBlogList, index: number) => (
           <BlogCard
-            key={blog.id}
+            key={index}
             title={blog.title}
             category={blog.category}
             description={blog.description}
             slug={blog.slug}
-            index={index}
           />
         ))}
       </div>

@@ -27,12 +27,6 @@ export default function BlogContent({ content, slug }: BlogContentProps) {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (mounted) {
-      scrollYProgress.onChange((v) => console.log("Scroll progress:", v));
-    }
-  }, [mounted, scrollYProgress]);
-
   return (
     <>
       {mounted && (
