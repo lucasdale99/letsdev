@@ -24,8 +24,6 @@ export default function Unsubscribe() {
     shouldRevalidate: "onInput",
   });
 
-  console.log(state);
-
   return (
     <div className="flex-1 w-full max-w-4xl mx-auto p-6">
       <motion.div

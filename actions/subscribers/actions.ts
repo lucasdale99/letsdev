@@ -111,7 +111,6 @@ export async function removeSubscriber(prevState: unknown, formData: FormData) {
       },
     });
   } else {
-    console.log(result);
     return result;
   }
 }
