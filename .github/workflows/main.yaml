@@ -11,6 +11,43 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+<<<<<<< Updated upstream
       # - run: npm install -g pnpm
       # - run: pnpm ci
       # - run: pnpm test
+=======
+
+      - name: Cache Next.js Build
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/
+            .open-next/
+            .sst/
+          key: cache-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]xs') }}
+          restore-keys: |
+            cache-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install AWS Creds
+        run: |
+          mkdir -p ~/.aws
+          echo "[default]" > ~/.aws/credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+
+      - name: Set SST Config Secret
+        run: |
+          npx sst secret set COMMIT_SHA ${{ github.sha }} --stage production
+
+      - name: Deploy with SST
+        run: pnpm run deploy
+
+      - name: Clean up AWS Profile
+        run: rm -rf ~/.aws
+>>>>>>> Stashed changes
