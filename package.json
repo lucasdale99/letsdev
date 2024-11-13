@@ -6,7 +6,6 @@
     "dev": "next dev",
     "start": "next start",
     "deploy": "sst deploy --stage production",
-    "migrate": "tsx cli/migrator.ts",
     "deploy:stage": "sst deploy --stage staging",
     "takeDown": "npx sst remove --stage production",
     "generate": "npx drizzle-kit generate",
@@ -45,6 +44,7 @@
     "tailwindcss": "3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.3.3",
+    "ws": "^8.18.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
