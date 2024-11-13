@@ -11,10 +11,10 @@ import { getWorkExperience } from "@/actions/work/getWorkExperience";
 
 export default async function ExperiencePage() {
   const experiences = await getWorkExperience();
-  const formatDate = (date: string): string => {
+  const formatDate = (date: string, showMonth: boolean = true): string => {
     if (date === "Current") return "Present";
     return new Date(date).toLocaleDateString("en-US", {
-      month: "long",
+      month: showMonth ? "long" : undefined,
       year: "numeric",
     });
   };
@@ -44,13 +44,17 @@ export default async function ExperiencePage() {
             id={experience.company.toLowerCase().replace(/\s+/g, "-")}
             className="rounded-lg p-6"
           >
-            <div className="flex justify-between items-center">
-              <h2 className="flex text-2xl font-semibold mb-2 ">
-                {experience.company}
-              </h2>
-              <span className="text-xl text-muted-foreground">
-                {formatDate(experience.startDate)} -{" "}
-                {formatDate(experience.endDate)}
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
+              <h2 className="text-2xl font-semibold">{experience.company}</h2>
+              <span className="text-lg sm:text-xl text-muted-foreground">
+                <span className="hidden sm:inline">
+                  {formatDate(experience.startDate, true)} -{" "}
+                  {formatDate(experience.endDate, true)}
+                </span>
+                <span className="sm:hidden">
+                  {formatDate(experience.startDate, false)} -{" "}
+                  {formatDate(experience.endDate, false)}
+                </span>
               </span>
             </div>
 
