@@ -3,8 +3,6 @@ import Image from "next/image";
 import Me from "@/public/me.png";
 import { TimelineList } from "@/components/TimelineList";
 import { AnimatedDescription } from "@/components/AnimatedDescription";
-import BlogList from "@/components/BlogList";
-import { Card } from "@/components/ui/card";
 import BlogCard from "@/components/BlogCard";
 export default async function Index() {
   const descriptions = [

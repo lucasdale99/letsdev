@@ -6,11 +6,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { workExperience } from "@/data/workExperience";
 import { Home } from "lucide-react";
+import { getWorkExperience } from "@/actions/work/getWorkExperience";
 
-export default function ExperiencePage() {
-  const experiences = workExperience;
+export default async function ExperiencePage() {
+  const experiences = await getWorkExperience();
   const formatDate = (date: string): string => {
     if (date === "Current") return "Present";
     return new Date(date).toLocaleDateString("en-US", {
