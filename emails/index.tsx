@@ -19,7 +19,7 @@ import config from "../tailwind.config";
 import Subscribed from "./subscribed";
 import Unsubscribed from "./unsubscribed";
 export const url = (route: string): string => {
-  let base = process.env.URL ?? "";
+  let base = process.env.NEXT_PUBLIC_URL ?? "";
   return `${base}${route}`;
 };
 

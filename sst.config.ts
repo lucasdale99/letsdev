@@ -18,7 +18,10 @@ export default $config({
         NEXT_PUBLIC_URL: next_public_url.value,
       },
       domain: {
-        name: "letusdev.io",
+        name:
+          $app.stage === "production"
+            ? "letusdev.io"
+            : `${$app.stage}.letusdev.io`,
         dns: sst.aws.dns({
           zone: "Z0600725332UFN0OF4ISC",
         }),
