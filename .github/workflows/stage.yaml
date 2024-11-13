@@ -39,12 +39,8 @@ jobs:
       - name: Set SST Config Secret
         run: |
           npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL_STAGING }} --stage staging
-          npx sst secret set NEXT_PUBLIC_SITE_URL ${{ secrets.NEXT_PUBLIC_SITE_URL_STAGING }} --stage staging
+          npx sst secret set NEXT_PUBLIC_URL ${{ secrets.NEXT_PUBLIC_URL_STAGING }} --stage staging
           npx sst secret set COMMIT_SHA ${{ github.sha }} --stage staging
-
-      - name: Run staging DB Migrations
-        run: |
-          STAGE=staging npx tsx cli/migrator.ts
 
       - name: Deploy with SST
         run: pnpm run deploy:stage
