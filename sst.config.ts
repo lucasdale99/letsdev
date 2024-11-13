@@ -10,9 +10,6 @@ export default $config({
     };
   },
   async run() {
-    const email = new sst.aws.Email("MyEmail", {
-      sender: "lucas@strukt.io",
-    });
     const database_url = new sst.Secret("DATABASE_URL");
     const next_public_url = new sst.Secret("NEXT_PUBLIC_URL");
     new sst.aws.Nextjs("letusdev", {
