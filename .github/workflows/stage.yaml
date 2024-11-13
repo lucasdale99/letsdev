@@ -1,4 +1,4 @@
-name: One-off Deploy
+name: Stage Deploy via SST
 
 on:
   workflow_dispatch:
@@ -11,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Cache Next.js Build
         uses: actions/cache@v4
         with:
@@ -37,10 +38,12 @@ jobs:
 
       - name: Set SST Config Secret
         run: |
-          npx sst secret set COMMIT_SHA ${{ github.sha }} --stage production
+          npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL_STAGING }} --stage staging
+          npx sst secret set NEXT_PUBLIC_URL ${{ secrets.NEXT_PUBLIC_URL_STAGING }} --stage staging
+          npx sst secret set COMMIT_SHA ${{ github.sha }} --stage staging
 
       - name: Deploy with SST
-        run: pnpm run deploy
+        run: pnpm run deploy:staging
 
       - name: Clean up AWS Profile
         run: rm -rf ~/.aws

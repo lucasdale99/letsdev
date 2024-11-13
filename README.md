@@ -92,5 +92,5 @@ sst secret set NEXT_PUBLIC_URL <your_next_public_url> --env <environment>
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch or create an issue
 3. Submit a pull request

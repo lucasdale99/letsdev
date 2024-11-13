@@ -1,18 +1,6 @@
-import {
-  Body,
-  Button,
-  Container,
-  Head,
-  Hr,
-  Html,
-  Img,
-  Link,
-  Preview,
-  Section,
-  Text,
-} from "@react-email/components";
+import { Text } from "@react-email/components";
 import * as React from "react";
-import { EmailWrapper, url } from ".";
+import { EmailWrapper } from ".";
 
 const Unsubscribed: React.FC = () => {
   return (

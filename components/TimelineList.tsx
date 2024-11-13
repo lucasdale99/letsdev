@@ -1,5 +1,5 @@
+import { getWorkExperience } from "@/actions/work/getWorkExperience";
 import { TimelineCard } from "@/components/TimelineCard";
-import { workExperience } from "@/data/workExperience";
 
 interface TimelineItem {
   company: string;
@@ -10,13 +10,14 @@ interface TimelineItem {
   slug: string;
 }
 
-export const TimelineList: React.FC = () => {
+export const TimelineList: React.FC = async () => {
+  const experiences = await getWorkExperience();
   const formatDate = (date: string): string => {
     if (date === "Current") return "Current";
     return new Date(date).getFullYear().toString();
   };
 
-  const timelineData: TimelineItem[] = workExperience.map((exp) => ({
+  const timelineData: TimelineItem[] = experiences.map((exp) => ({
     company: exp.company,
     startDate: exp.startDate,
     endDate: exp.endDate,

@@ -10,9 +10,6 @@ export default $config({
     };
   },
   async run() {
-    const email = new sst.aws.Email("MyEmail", {
-      sender: "lucas@strukt.io",
-    });
     const database_url = new sst.Secret("DATABASE_URL");
     const next_public_url = new sst.Secret("NEXT_PUBLIC_URL");
     new sst.aws.Nextjs("letusdev", {
@@ -21,7 +18,10 @@ export default $config({
         NEXT_PUBLIC_URL: next_public_url.value,
       },
       domain: {
-        name: "letusdev.io",
+        name:
+          $app.stage === "production"
+            ? "letusdev.io"
+            : `${$app.stage}.letusdev.io`,
         dns: sst.aws.dns({
           zone: "Z0600725332UFN0OF4ISC",
         }),

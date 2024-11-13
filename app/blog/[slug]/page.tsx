@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import BlogContent from "./components/BlogContent";
 import SubscriberForm from "../components/SubscriberForm";
+import { getBlog } from "@/actions/blog/getBlog";
 
 interface BlogParams {
   params: {
@@ -9,25 +10,15 @@ interface BlogParams {
 }
 
 export default async function BlogPost({ params }: BlogParams) {
-  const blog = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/blog/${params.slug}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const blog = await getBlog(params.slug);
 
-  const blogData = await blog.json();
-
-  if (!blogData || !blogData.data) {
+  if (!blog) {
     return notFound();
   }
 
   return (
     <>
-      <BlogContent content={blogData.data.content} slug={params.slug} />
+      <BlogContent content={blog.content} slug={params.slug} />
       <div className="flex-1 w-full max-w-4xl mx-auto p-6">
         <SubscriberForm />
       </div>
