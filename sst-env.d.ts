@@ -10,18 +10,9 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "MyEmail": {
-      "configSet": string
-      "sender": string
-      "type": "sst.aws.Email"
-    }
     "NEXT_PUBLIC_URL": {
       "type": "sst.sst.Secret"
       "value": string
-    }
-    "letusdev": {
-      "type": "sst.aws.Nextjs"
-      "url": string
     }
   }
 }
