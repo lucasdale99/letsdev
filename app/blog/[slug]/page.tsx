@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import BlogContent from "./components/BlogContent";
 import SubscriberForm from "../components/SubscriberForm";
 import { getBlog } from "@/lib/db/actions/blog";
-import LikeDislike from "./components/LikeDislike";
+import Like from "./components/Like";
 
 interface BlogParams {
   params: {
@@ -21,11 +21,13 @@ export default async function BlogPost({ params }: BlogParams) {
     return notFound();
   }
 
+  console.log(blog, "TEST");
+
   return (
     <>
       <BlogContent content={blog.content} slug={`${params.slug}`} />
       <div className="flex-1 w-full max-w-4xl mx-auto p-6">
-        <LikeDislike postId={`${params.slug}`} initialLikes={blog.likes} />
+        <Like postId={`${params.slug}`} initialLikes={blog.likes} />
         <SubscriberForm />
       </div>
     </>

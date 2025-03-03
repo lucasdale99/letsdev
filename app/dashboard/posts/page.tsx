@@ -9,6 +9,8 @@ export default async function Page() {
   const publishedBlogs = await getPublishedBlogs();
   const unpublishedBlogs = await getUnpublishedBlogs();
 
+  console.log(publishedBlogs, "PUBLISHED BLOG POSTS");
+
   return (
     <div>
       <Sidebar />
