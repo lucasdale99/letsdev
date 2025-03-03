@@ -3,13 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { addSubscriber } from "@/actions/subscribers/actions";
 import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRef } from "react";
-import { subscriberSchema } from "@/actions/subscribers/subscriber.schema";
+import { subscriberSchema } from "@/lib/handlers/subscribers/subscriber.schema";
 import { motion } from "framer-motion";
+import { addSubscriber } from "@/lib/handlers/subscribers/actions";
 
 export default function SubscriberForm() {
   const [state, action] = useFormState(addSubscriber, undefined);

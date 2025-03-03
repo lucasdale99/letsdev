@@ -6,8 +6,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { getWorkExperience } from "@/lib/db/actions/work";
 import { Home } from "lucide-react";
-import { getWorkExperience } from "@/actions/work/getWorkExperience";
 
 export default async function ExperiencePage() {
   const experiences = await getWorkExperience();

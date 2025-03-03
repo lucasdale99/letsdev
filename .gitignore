@@ -40,3 +40,8 @@ next-env.d.ts
 
 # sst
 .sst
+
+/.cursor/*
+
+# cursor
+.cursor/*
