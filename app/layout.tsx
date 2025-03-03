@@ -1,7 +1,8 @@
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
@@ -31,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={GeistSans.className}>
+    <html lang="en" suppressHydrationWarning className="h-full">
+      <body className={`${GeistSans.className} min-h-full`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -43,6 +44,7 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <main className="flex-1">{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
