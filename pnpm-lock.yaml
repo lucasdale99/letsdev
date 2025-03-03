@@ -130,8 +130,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
       aws-cdk-lib:
-        specifier: 2.142.1
-        version: 2.142.1(constructs@10.4.2)
+        specifier: 2.177.0
+        version: 2.177.0(constructs@10.4.2)
       drizzle-kit:
         specifier: ^0.27.2
         version: 0.27.2
@@ -167,6 +167,12 @@ packages:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.1.0':
     resolution: {integrity: sha512-7bY3J8GCVxLupn/kNmpPc5VJz8grx+4RKfnnJiO1LG+uxkZfANZG3RMHhE+qQxxwkyQ9/MfPtTpf748UhR425A==}
+
+  '@aws-cdk/cloud-assembly-schema@39.2.8':
+    resolution: {integrity: sha512-VkppFgLbm5M1/K8S+BimI/0COq+E9fCDcdDyAe4gFizHNZTALZA4sMds2kug1rtPFKCcWAexrycs2D4iQHcRCw==}
+    bundledDependencies:
+      - jsonschema
+      - semver
 
   '@aws-crypto/crc32@5.2.0':
     resolution: {integrity: sha512-nLbCWqQNgUiwwtFsen1AdzAtvuLRsQS8rYgMuxCrdKf9kOssamGLuPwyTY9wyYblNr9+1XM8v6zoDTPPSIeANg==}
@@ -1925,8 +1931,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  aws-cdk-lib@2.142.1:
-    resolution: {integrity: sha512-xs4NRoml5/Zh30YHSk/Wwmr7VcZOZHyIInuBye3gC/BYwCh1lsUe9/ChWIeLUCRhUrELd5npyoBOJiHb3ql7Rg==}
+  aws-cdk-lib@2.177.0:
+    resolution: {integrity: sha512-nTnHAwjZaPJ5gfJjtzE/MyK6q0a66nWthoJl7l8srucRb+I30dczhbbXor6QCdVpJaTRAEliMOMq23aglsAQbg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -3267,6 +3273,8 @@ snapshots:
   '@aws-cdk/asset-kubectl-v20@2.1.4': {}
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.1.0': {}
+
+  '@aws-cdk/cloud-assembly-schema@39.2.8': {}
 
   '@aws-crypto/crc32@5.2.0':
     dependencies:
@@ -5324,11 +5332,12 @@ snapshots:
       postcss: 8.4.33
       postcss-value-parser: 4.2.0
 
-  aws-cdk-lib@2.142.1(constructs@10.4.2):
+  aws-cdk-lib@2.177.0(constructs@10.4.2):
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.225
       '@aws-cdk/asset-kubectl-v20': 2.1.4
       '@aws-cdk/asset-node-proxy-agent-v6': 2.1.0
+      '@aws-cdk/cloud-assembly-schema': 39.2.8
       constructs: 10.4.2
 
   aws4fetch@1.0.20: {}
