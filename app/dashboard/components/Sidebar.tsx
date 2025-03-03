@@ -5,7 +5,7 @@ import { signOut } from "@/auth";
 
 export default function Sidebar() {
   return (
-    <div className="w-64 h-[calc(100vh-4rem)] bg-background border-r border-blue-500/20 hidden lg:block fixed left-0 top-16">
+    <div className="w-64 h-[calc(100vh-6rem)] bg-background border-r border-blue-500/20 hidden lg:block fixed left-0 top-16">
       <div className="p-6">
         <div className="mb-8">
           <h1 className="text-2xl font-bold">LetUsDev</h1>

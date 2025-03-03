@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col items-center md:items-start">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Lucas Dale
+              © {new Date().getFullYear()} Let's Dev
             </p>
           </div>
 
