@@ -6,7 +6,13 @@ import Footer from "@/components/Footer";
 import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "hsl(240 5.9% 10%)" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -41,7 +47,7 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="theme-mode"
         >
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
