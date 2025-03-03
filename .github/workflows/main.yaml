@@ -37,6 +37,8 @@ jobs:
 
       - name: Set SST Config Secret
         run: |
+          npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL }} --stage production
+          npx sst secret set NEXT_PUBLIC_URL ${{ secrets.NEXT_PUBLIC_URL }} --stage production
           npx sst secret set COMMIT_SHA ${{ github.sha }} --stage production
 
       - name: Deploy with SST
