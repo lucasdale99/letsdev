@@ -48,7 +48,6 @@ jobs:
           echo "AUTH_TRUST_HOST=${{ vars.AUTH_TRUST_HOST }}" >> $GITHUB_ENV
       - name: Set SST Config Secret
         run: |
-          npx sst unlock --stage staging
           npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL_STAGING }} --stage staging
           npx sst secret set NEXT_PUBLIC_URL ${{ vars.NEXT_PUBLIC_URL }} --stage staging
           npx sst secret set COMMIT_SHA ${{ github.sha }} --stage staging
