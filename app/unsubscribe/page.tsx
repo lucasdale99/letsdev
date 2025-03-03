@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { removeSubscriber } from "@/handlers/subscribers/actions";
+import { removeSubscriber } from "@/lib/handlers/subscribers/actions";
 import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
