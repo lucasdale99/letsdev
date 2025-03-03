@@ -1,8 +1,15 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Stats from "./components/Stats";
-
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 export default async function Page() {
+  const session = await auth();
+
+  if (session?.user?.email !== process.env.AUTH_ALLOWED_EMAIL) {
+    redirect("/login");
+  }
+
   return (
     <div className="bg-background">
       <Sidebar />

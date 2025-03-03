@@ -33,7 +33,7 @@ export default function Sidebar() {
           <form
             action={async () => {
               "use server";
-              await signOut({ redirectTo: "/" });
+              await signOut({ redirect: true, redirectTo: "/" });
             }}
           >
             <button
