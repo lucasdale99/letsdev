@@ -21,8 +21,6 @@ export default async function BlogPost({ params }: BlogParams) {
     return notFound();
   }
 
-  console.log(blog, "TEST");
-
   return (
     <>
       <BlogContent content={blog.content} slug={`${params.slug}`} />
