@@ -37,13 +37,15 @@ jobs:
 
       - name: Set environment variables for build
         run: |
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }}" >> $GITHUB_ENV
-          echo "COMMIT_SHA=${{ github.sha }}" >> $GITHUB_ENV
-          echo "AUTH_SECRET=${{ secrets.AUTH_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}" >> $GITHUB_ENV
-          echo "AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_ALLOWED_EMAIL=${{ secrets.AUTH_ALLOWED_EMAILS }}" >> $GITHUB_ENV
+          {
+            echo DATABASE_URL=${{ secrets.DATABASE_URL }}
+            echo NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }}
+            echo COMMIT_SHA=${{ github.sha }}
+            echo AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+            echo AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}
+            echo AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}
+            echo AUTH_ALLOWED_EMAIL=${{ secrets.AUTH_ALLOWED_EMAILS }}
+          } > .env.local
 
       - name: Set SST Config Secret
         run: |

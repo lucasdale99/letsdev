@@ -55,7 +55,7 @@ jobs:
           npx sst secret set AUTH_GOOGLE_ID ${{ secrets.AUTH_GOOGLE_ID }} --stage staging
           npx sst secret set AUTH_GOOGLE_SECRET ${{ secrets.AUTH_GOOGLE_SECRET }} --stage staging
           npx sst secret set AUTH_ALLOWED_EMAIL ${{ secrets.AUTH_ALLOWED_EMAILS }} --stage staging
-          
+
       - name: Deploy with SST
         run: pnpm run deploy:staging
 
