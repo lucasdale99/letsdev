@@ -5,4 +5,6 @@ export interface IBlogList {
   category: string;
   description: string;
   content: string;
+  views: number;
+  likes: number;
 }

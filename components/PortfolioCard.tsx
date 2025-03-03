@@ -1,20 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardFooter } from "./ui/card";
-import { Eye, Heart, Send, Trash } from "lucide-react";
-import { Button } from "./ui/button";
-import { publishBlog, deleteBlog } from "@/lib/db/actions/blog";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "./ui/alert-dialog";
+import { Eye, Heart } from "lucide-react";
 
 interface PortfolioCardProps {
   title: string;
@@ -56,9 +43,9 @@ export default function PortfolioCard({
       </div>
       {id && (
         <CardFooter className="p-0 mt-4 flex gap-4">
-          <span className="text-sm text-muted-foreground flex items-center gap-1">
+          {/* <span className="text-sm text-muted-foreground flex items-center gap-1">
             <Eye className="w-4 h-4" /> {views}
-          </span>
+          </span> */}
           <span className="text-sm text-muted-foreground flex items-center gap-1">
             <Heart className="w-4 h-4" /> {likes}
           </span>

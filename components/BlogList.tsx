@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import BlogListSkeleton from "./BlogListSkeleton";
 import { getPublishedBlogs } from "@/lib/db/actions/blog";
 import { IBlogList } from "@/types/blog/types";
+
+
 export default async function BlogList() {
   const blogs = await getPublishedBlogs();
 
@@ -17,6 +19,8 @@ export default async function BlogList() {
             category={blog.category}
             description={blog.description}
             slug={`/blog/${blog.slug}`}
+            views={blog.views}
+            likes={blog.likes}
           />
         ))}
       </div>

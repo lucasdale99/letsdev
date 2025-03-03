@@ -44,7 +44,6 @@ export default function DashboardCard({
   published = true,
   isEditable = false,
 }: PortfolioCardProps) {
-
   return (
     <Card className="p-6 my-4 transition-all duration-300 ease-in-out">
       <div className="flex justify-between items-start">
@@ -138,9 +137,9 @@ export default function DashboardCard({
       </div>
       {id && (
         <CardFooter className="p-0 mt-4 flex gap-4">
-          <span className="text-sm text-muted-foreground flex items-center gap-1">
+          {/* <span className="text-sm text-muted-foreground flex items-center gap-1">
             <Eye className="w-4 h-4" /> {views}
-          </span>
+          </span> */}
           <span className="text-sm text-muted-foreground flex items-center gap-1">
             <Heart className="w-4 h-4" /> {likes}
           </span>
