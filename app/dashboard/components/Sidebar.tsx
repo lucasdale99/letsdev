@@ -3,7 +3,7 @@
 import React, { useState, createContext, useContext } from "react";
 import { LayoutDashboard, FileEdit, LogOut, Menu } from "lucide-react";
 import Link from "next/link";
-import { signOut } from "@/auth";
+import { handleLogout } from "../actions/auth";
 
 // Create a context to share the sidebar state
 export const SidebarContext = createContext({ isOpen: false });
@@ -55,14 +55,15 @@ export default function Sidebar() {
           </nav>
 
           <div className="absolute bottom-6 left-6 right-6">
-            <button
-              type="button"
-              onClick={() => signOut({ redirect: true, redirectTo: "/" })}
-              className="flex items-center space-x-3 p-3 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-all duration-300 ease-in-out w-full text-muted-foreground"
-            >
-              <LogOut className="w-5 h-5" />
-              <span>Logout</span>
-            </button>{" "}
+            <form action={handleLogout}>
+              <button
+                type="submit"
+                className="flex items-center space-x-3 p-3 rounded-lg hover:bg-destructive/10 hover:text-destructive transition-all duration-300 ease-in-out w-full text-muted-foreground"
+              >
+                <LogOut className="w-5 h-5" />
+                <span>Logout</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
