@@ -37,16 +37,19 @@ jobs:
           echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
           echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
 
-      - name: Set environment variables for build
+      - name: Create .env.local file
         run: |
-          echo "DATABASE_URL=${{ secrets.DATABASE_URL_STAGING }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }}" >> $GITHUB_ENV
-          echo "COMMIT_SHA=${{ github.sha }}" >> $GITHUB_ENV
-          echo "AUTH_SECRET=${{ secrets.AUTH_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}" >> $GITHUB_ENV
-          echo "AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_TRUST_HOST=${{ vars.AUTH_TRUST_HOST }}" >> $GITHUB_ENV
-          echo "AUTH_ALLOWED_EMAIL=${{ vars.AUTH_ALLOWED_EMAIL }}" >> $GITHUB_ENV
+          cat << EOF > .env.local
+          DATABASE_URL=${{ secrets.DATABASE_URL_STAGING }}
+          NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }}
+          COMMIT_SHA=${{ github.sha }}
+          AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+          AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}
+          AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}
+          AUTH_TRUST_HOST=${{ vars.AUTH_TRUST_HOST }}
+          AUTH_ALLOWED_EMAIL=${{ vars.AUTH_ALLOWED_EMAIL }}
+          EOF
+
       - name: Set SST Config Secret
         run: |
           npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL_STAGING }} --stage staging
