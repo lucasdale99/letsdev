@@ -47,7 +47,7 @@ jobs:
           AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}
           AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}
           AUTH_TRUST_HOST=${{ vars.AUTH_TRUST_HOST }}
-          AUTH_ALLOWED_EMAIL=${{ vars.AUTH_ALLOWED_EMAIL }}
+          AUTH_ALLOWED_EMAIL=${{ secrets.AUTH_ALLOWED_EMAIL }}
           EOF
 
       - name: Set SST Config Secret
@@ -59,7 +59,7 @@ jobs:
           npx sst secret set AUTH_GITHUB_ID ${{ secrets.AUTH_GITHUB_ID }} --stage staging
           npx sst secret set AUTH_GITHUB_SECRET ${{ secrets.AUTH_GITHUB_SECRET }} --stage staging
           npx sst secret set AUTH_TRUST_HOST ${{ vars.AUTH_TRUST_HOST }} --stage staging
-          npx sst secret set AUTH_ALLOWED_EMAIL ${{ vars.AUTH_ALLOWED_EMAIL }} --stage staging
+          npx sst secret set AUTH_ALLOWED_EMAIL ${{ secrets.AUTH_ALLOWED_EMAIL }} --stage staging
       - name: Deploy with SST
         run: pnpm run deploy:staging
 
