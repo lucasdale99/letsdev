@@ -15,6 +15,8 @@ interface PortfolioCardProps {
   isEditable?: boolean;
 }
 
+export const revalidate = 0;
+
 export default function PortfolioCard({
   id,
   title,

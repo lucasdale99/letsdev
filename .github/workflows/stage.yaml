@@ -42,20 +42,18 @@ jobs:
           echo "NEXT_PUBLIC_URL=${{ vars.NEXT_PUBLIC_URL }}" >> $GITHUB_ENV
           echo "COMMIT_SHA=${{ github.sha }}" >> $GITHUB_ENV
           echo "AUTH_SECRET=${{ secrets.AUTH_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_GOOGLE_ID=${{ secrets.AUTH_GOOGLE_ID }}" >> $GITHUB_ENV
-          echo "AUTH_GOOGLE_SECRET=${{ secrets.AUTH_GOOGLE_SECRET }}" >> $GITHUB_ENV
-          echo "AUTH_ALLOWED_EMAIL=${{ secrets.AUTH_ALLOWED_EMAILS }}" >> $GITHUB_ENV
+          echo "AUTH_GITHUB_ID=${{ secrets.AUTH_GITHUB_ID }}" >> $GITHUB_ENV
+          echo "AUTH_GITHUB_SECRET=${{ secrets.AUTH_GITHUB_SECRET }}" >> $GITHUB_ENV
           echo "AUTH_TRUST_HOST=${{ vars.AUTH_TRUST_HOST }}" >> $GITHUB_ENV
+          echo "AUTH_ALLOWED_EMAIL=${{ vars.AUTH_ALLOWED_EMAIL }}" >> $GITHUB_ENV
       - name: Set SST Config Secret
         run: |
           npx sst secret set DATABASE_URL ${{ secrets.DATABASE_URL_STAGING }} --stage staging
           npx sst secret set NEXT_PUBLIC_URL ${{ vars.NEXT_PUBLIC_URL }} --stage staging
           npx sst secret set COMMIT_SHA ${{ github.sha }} --stage staging
           npx sst secret set AUTH_SECRET ${{ secrets.AUTH_SECRET }} --stage staging
-          npx sst secret set AUTH_GOOGLE_ID ${{ secrets.AUTH_GOOGLE_ID }} --stage staging
-          npx sst secret set AUTH_GOOGLE_SECRET ${{ secrets.AUTH_GOOGLE_SECRET }} --stage staging
-          npx sst secret set AUTH_ALLOWED_EMAIL ${{ secrets.AUTH_ALLOWED_EMAILS }} --stage staging
           npx sst secret set AUTH_TRUST_HOST ${{ vars.AUTH_TRUST_HOST }} --stage staging
+          npx sst secret set AUTH_ALLOWED_EMAIL ${{ vars.AUTH_ALLOWED_EMAIL }} --stage staging
       - name: Deploy with SST
         run: pnpm run deploy:staging
 
