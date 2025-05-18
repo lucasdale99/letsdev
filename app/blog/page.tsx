@@ -10,6 +10,8 @@ import {
 import { Home } from "lucide-react";
 import SubscriberForm from "./components/SubscriberForm";
 
+export const revalidate = 60;
+
 export default function Blog() {
   return (
     <div className="flex-1 w-full max-w-4xl mx-auto p-6">

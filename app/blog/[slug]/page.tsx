@@ -4,7 +4,7 @@ import SubscriberForm from "../components/SubscriberForm";
 import { getBlog } from "@/lib/db/actions/blog";
 import Like from "./components/Like";
 
-export const revalidate = 0;
+export const revalidate = 60;
 
 interface BlogParams {
   params: {

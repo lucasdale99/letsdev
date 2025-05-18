@@ -4,6 +4,7 @@ import BlogListSkeleton from "./BlogListSkeleton";
 import { getPublishedBlogs } from "@/lib/db/actions/blog";
 import { IBlogList } from "@/types/blog/types";
 
+export const revalidate = 60;
 
 export default async function BlogList() {
   const blogs = await getPublishedBlogs();

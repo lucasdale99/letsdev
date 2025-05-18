@@ -53,6 +53,8 @@ export async function getPublishedBlogs() {
       .where(eq(blogsTable.published, true))
       .execute();
 
+    console.log(blogs, "BLOGS");
+
     return blogs;
   } catch (error) {
     console.error("Error fetching blogs:", error);
