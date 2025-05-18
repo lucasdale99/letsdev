@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
 import BlogContent from "./components/BlogContent";
 import SubscriberForm from "../components/SubscriberForm";
 import { getBlog } from "@/lib/db/actions/blog";
 import Like from "./components/Like";
+import notFound from "./not-found";
 
 export const revalidate = 60;
 
