@@ -24,6 +24,7 @@ const PostForm = ({ initialData }: { initialData: any }) => {
 
   const defaultValues = {
     title: initialData?.title || "",
+    slug: initialData?.slug || "",
     description: initialData?.description || "",
     content: initialData?.content || "",
     category: initialData?.category || "",
@@ -51,6 +52,7 @@ const PostForm = ({ initialData }: { initialData: any }) => {
         }
       }}
     >
+      {initialData && <input type="hidden" name="id" value={initialData.id} />}
       <div>
         <label htmlFor="title" className="text-sm font-medium">
           Blog Title
@@ -64,6 +66,21 @@ const PostForm = ({ initialData }: { initialData: any }) => {
         />
         {fields.title.errors && (
           <p className="text-sm text-red-500 mt-1">{fields.title.errors}</p>
+        )}
+      </div>
+      <div>
+        <label htmlFor="slug" className="text-sm font-medium">
+          Slug
+        </label>
+        <Input
+          name="slug"
+          placeholder="Enter post slug"
+          className="flex-1"
+          required
+          defaultValue={initialData?.slug}
+        />
+        {fields.title.errors && (
+          <p className="text-sm text-red-500 mt-1">{fields.slug.errors}</p>
         )}
       </div>
 
@@ -141,7 +158,9 @@ const PostForm = ({ initialData }: { initialData: any }) => {
           animate={{ opacity: 1 }}
           className="text-sm text-green-500 text-center"
         >
-          Post created successfully!
+          {initialData
+            ? "Post updated successfully!"
+            : "Post created successfully!"}
         </motion.p>
       )}
       {state?.status === "error" && (

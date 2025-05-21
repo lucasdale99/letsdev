@@ -35,8 +35,18 @@ export async function updateBlogAction(
 ): Promise<ActionResponse> {
   try {
     const rawData = Object.fromEntries(formData.entries());
-    const validatedData = insertBlogSchema.parse(rawData);
-    const result = await updateBlog(Number(rawData.id), validatedData);
+    console.log(rawData, "RAW DATA");
+
+    // Extract id before validation
+    const id = Number(rawData.id);
+
+    // Remove id from data before validation since it's not part of the schema
+    const { id: _, ...dataToValidate } = rawData;
+
+    const validatedData = insertBlogSchema.parse(dataToValidate);
+    console.log(validatedData, "VALIDATED DATA");
+
+    const result = await updateBlog(id, validatedData);
 
     return {
       status: result.success ? "success" : "error",

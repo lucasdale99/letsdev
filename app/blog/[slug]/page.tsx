@@ -3,6 +3,7 @@ import SubscriberForm from "../components/SubscriberForm";
 import { getBlog } from "@/lib/db/actions/blog";
 import Like from "./components/Like";
 import notFound from "./not-found";
+import NotFound from "./not-found";
 
 export const revalidate = 60;
 
@@ -16,11 +17,11 @@ export default async function BlogPost({ params }: BlogParams) {
   const blog = await getBlog(params.slug);
 
   if (blog?.published === false) {
-    return notFound();
+    return <NotFound />;
   }
 
   if (!blog) {
-    return notFound();
+    return <NotFound />;
   }
 
   return (

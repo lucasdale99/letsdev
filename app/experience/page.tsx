@@ -11,6 +11,7 @@ import { Home } from "lucide-react";
 
 export default async function ExperiencePage() {
   const experiences = await getWorkExperience();
+  console.log(experiences, "EXPERIENCES");
   const formatDate = (date: string, showMonth: boolean = true): string => {
     if (date === "Current") return "Present";
     return new Date(date).toLocaleDateString("en-US", {

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import React from "react";
 import { Button } from "../../../components/ui/button";
+
 export default function NotFound() {
   const router = useRouter();
 

@@ -127,6 +127,8 @@ export async function updateBlog(
   id: number,
   formData: Partial<z.infer<typeof insertBlogSchema>>
 ) {
+  console.log(formData, "FORM DATA");
+
   try {
     const blog = await db
       .update(blogsTable)

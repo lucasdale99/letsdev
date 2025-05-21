@@ -62,22 +62,23 @@ export default function BlogContent({ content, slug }: BlogContentProps) {
           </BreadcrumbList>
         </Breadcrumb>
         <ReactMarkdown
-          className="prose prose-invert max-w-none"
+          className="prose prose-invert max-w-none prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-p:mb-4"
           components={{
-            h1: ({ children }) => (
-              <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>
+            h1: ({ node, ...props }) => (
+              <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
             ),
-            h2: ({ children }) => (
-              <h2 className="text-2xl font-bold mt-6 mb-3">{children}</h2>
+            h2: ({ node, ...props }) => (
+              <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />
             ),
-            p: ({ children }) => <p className="mb-4">{children}</p>,
-            ul: ({ children }) => (
-              <ul className="list-disc pl-6 mb-4">{children}</ul>
+            p: ({ node, ...props }) => <p className="mb-4" {...props} />,
+            ul: ({ node, ...props }) => (
+              <ul className="list-disc pl-6 mb-4" {...props} />
             ),
-            blockquote: ({ children }) => (
-              <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
-                {children}
-              </blockquote>
+            blockquote: ({ node, ...props }) => (
+              <blockquote
+                className="border-l-4 border-gray-300 pl-4 italic my-4"
+                {...props}
+              />
             ),
           }}
         >
