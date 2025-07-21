@@ -7,6 +7,7 @@ export function SocialIcons() {
       <Link
         href="https://github.com/lucasdale99"
         target="_blank"
+        aria-label="GitHub"
         rel="noopener noreferrer"
         className="hover:ring-gold hover:shadow-gold transition-all duration-300 ease-in-out p-2 rounded-full ring-2 group"
       >
@@ -16,6 +17,7 @@ export function SocialIcons() {
       <Link
         href="https://www.linkedin.com/in/lucas-dale/"
         target="_blank"
+        aria-label="LinkedIn"
         rel="noopener noreferrer"
         className="hover:ring-gold hover:shadow-gold transition-all duration-300 ease-in-out p-2 rounded-full ring-2 group"
       >
@@ -25,6 +27,7 @@ export function SocialIcons() {
       <Link
         href="https://x.com/lucas___dale"
         target="_blank"
+        aria-label="X"
         rel="noopener noreferrer"
         className="hover:ring-gold hover:shadow-gold transition-all duration-300 ease-in-out p-2 rounded-full ring-2 group"
       >
