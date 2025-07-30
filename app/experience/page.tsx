@@ -11,7 +11,7 @@ import { Home } from "lucide-react";
 
 export default async function ExperiencePage() {
   const experiences = await getWorkExperience();
-  console.log(experiences, "EXPERIENCES");
+
   const formatDate = (date: string, showMonth: boolean = true): string => {
     if (date === "Current") return "Present";
     return new Date(date).toLocaleDateString("en-US", {
@@ -39,7 +39,7 @@ export default async function ExperiencePage() {
       <h1 className="text-4xl font-bold mb-8 text-white">Work Experience</h1>
 
       <div className="space-y-12">
-        {experiences.map((experience) => (
+        {experiences.reverse().map((experience) => (
           <div
             key={experience.company}
             id={experience.company.toLowerCase().replace(/\s+/g, "-")}

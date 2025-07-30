@@ -53,8 +53,6 @@ export async function getPublishedBlogs() {
       .where(eq(blogsTable.published, true))
       .execute();
 
-    console.log(blogs, "BLOGS");
-
     return blogs;
   } catch (error) {
     console.error("Error fetching blogs:", error);
@@ -127,8 +125,6 @@ export async function updateBlog(
   id: number,
   formData: Partial<z.infer<typeof insertBlogSchema>>
 ) {
-  console.log(formData, "FORM DATA");
-
   try {
     const blog = await db
       .update(blogsTable)
@@ -222,6 +218,14 @@ export async function likeBlog(slug: string, anonymousId: string) {
       .set({ likes: blog[0].likes + 1 })
       .where(eq(blogsTable.slug, slug));
 
+    // 3. Invalidate the blog list cache
+    revalidatePath("/blog");
+    // Also invalidate the individual blog post page
+    revalidatePath(`/blog/${slug}`);
+    // Invalidate dashboard pages that show blog data
+    revalidatePath("/dashboard");
+    revalidatePath("/dashboard/posts");
+
     return { success: true };
   } catch (error) {
     console.error("Error liking blog:", error);
@@ -276,6 +280,14 @@ export async function unlikeBlog(slug: string, anonymousId: string) {
       .update(blogsTable)
       .set({ likes: newLikes })
       .where(eq(blogsTable.slug, slug));
+
+    // 3. Invalidate the blog list cache
+    revalidatePath("/blog");
+    // Also invalidate the individual blog post page
+    revalidatePath(`/blog/${slug}`);
+    // Invalidate dashboard pages that show blog data
+    revalidatePath("/dashboard");
+    revalidatePath("/dashboard/posts");
 
     return { success: true };
   } catch (error) {

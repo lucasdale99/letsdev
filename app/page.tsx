@@ -5,11 +5,11 @@ import { AnimatedDescription } from "@/components/AnimatedDescription";
 import PortfolioCard from "@/components/PortfolioCard";
 export default async function Index() {
   const descriptions = [
-    "Father of Two",
     "Bond servant of Christ",
+    "Father of Three",
     "Husband",
     "Developer",
-    "Coffee Fiend",
+    "Fueled by Coffee",
     "Disc Golfer",
     "Pickleball Player",
     "Skateboarder",
@@ -52,9 +52,9 @@ export default async function Index() {
           </div>
 
           <div className="flex flex-col">
-            <h1 className="text-3xl font-bold">My Business</h1>
+            <h1 className="text-3xl font-bold">Contact the Team</h1>
             <PortfolioCard
-              title={"Check out Strukt"}
+              title={"Strukt"}
               description={
                 "Strukt is a company that I'm building with my friend, Matt Schroder. We do anything from product building to consulting to game development. We're always looking for new clients and would love to have a conversation with you."
               }

@@ -35,7 +35,6 @@ export async function updateBlogAction(
 ): Promise<ActionResponse> {
   try {
     const rawData = Object.fromEntries(formData.entries());
-    console.log(rawData, "RAW DATA");
 
     // Extract id before validation
     const id = Number(rawData.id);
@@ -44,7 +43,6 @@ export async function updateBlogAction(
     const { id: _, ...dataToValidate } = rawData;
 
     const validatedData = insertBlogSchema.parse(dataToValidate);
-    console.log(validatedData, "VALIDATED DATA");
 
     const result = await updateBlog(id, validatedData);
 
