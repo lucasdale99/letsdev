@@ -22,14 +22,6 @@ export default function Footer() {
               >
                 Blog
               </Link>
-              <Link
-                href="https://strukt.io"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Strukt
-              </Link>
 
               <Link
                 href="/experience"

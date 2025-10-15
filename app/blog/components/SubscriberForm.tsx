@@ -16,7 +16,7 @@ export default function SubscriberForm() {
   const ref = useRef<HTMLFormElement>(null);
 
   const example = {
-    email: "lucas@strukt.io",
+    email: "lucasdale99@gmail.com",
   };
 
   const [form, fields] = useForm({

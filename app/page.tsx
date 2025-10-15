@@ -9,11 +9,12 @@ export default async function Index() {
     "Father of Three",
     "Husband",
     "Developer",
-    "Fueled by Coffee",
+    "Coffee Sipper",
     "Disc Golfer",
     "Pickleball Player",
     "Skateboarder",
     "Audio Book Listener",
+    "Bible Reader",
   ];
 
   return (
@@ -43,7 +44,7 @@ export default async function Index() {
       <div className="w-full max-w-3xl px-6">
         <div className="grid grid-cols-1 gap-8">
           <div className="flex flex-col space-y-4">
-            <h1 className="text-3xl font-bold">My Blog</h1>
+            <h3 className="text-3xl font-bold">My Blog</h3>
             <PortfolioCard
               title="Check out my articles"
               description="I'll be posting about my personal life, professional experiences, and things I'm learning. These will range from being a Christ follower, my experiences as a father, and entrepreneur. I'll also post about the tech I'm interested in."
@@ -52,18 +53,18 @@ export default async function Index() {
           </div>
 
           <div className="flex flex-col">
-            <h1 className="text-3xl font-bold">Contact the Team</h1>
+            <h3 className="text-3xl font-bold">Contact Me</h3>
             <PortfolioCard
-              title={"Strukt"}
+              title={"Check me out"}
               description={
-                "Strukt is a company that I'm building with my friend, Matt Schroder. We do anything from product building to consulting to game development. We're always looking for new clients and would love to have a conversation with you."
+                "If you are looking for a software engineer to help with your next project, email me!"
               }
-              slug="https://strukt.io"
+              slug="mailto:lucasdale99@gmail.com"
             />
           </div>
 
           <div className="flex flex-col">
-            <h1 className="text-3xl font-bold">My Experience</h1>
+            <h3 className="text-3xl font-bold">My Experience</h3>
             <PortfolioCard
               title={"Check out my experience"}
               description={

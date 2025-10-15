@@ -1,6 +1,6 @@
 import { render } from "@react-email/render";
 import React from "react";
-import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
+import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
 
 type ReactComponent =
   | React.FunctionComponent<any>
@@ -21,19 +21,20 @@ type MailProps = {
   to?: string[];
   props?: any;
 };
+
 export async function mail(template: ReactComponent, mail: MailProps) {
   const send = async () =>
-    await new SESv2Client().send(
+    await new SESClient().send(
       new SendEmailCommand({
-        FromEmailAddress: "lucas@strukt.io",
+        Source: "lucasdale99@gmail.com",
         Destination: {
           ToAddresses: mail.to || [],
         },
-        Content: {
-          Simple: {
-            Subject: { Data: mail.subject },
-            Body: { Html: { Data: await renderEmail(template, mail.props) } },
+        Message: {
+          Subject: {
+            Data: mail.subject,
           },
+          Body: { Html: { Data: await renderEmail(template, mail.props) } },
         },
       })
     );

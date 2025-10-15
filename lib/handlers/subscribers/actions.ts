@@ -9,6 +9,10 @@ import {
   deleteSubscriber,
   getSubscriberByEmail,
 } from "@/lib/db/actions/subscriber";
+import { Post, PostNotificationEmail } from "@/lib/emails/postNotification";
+import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
+import React from "react";
+import { render } from "@react-email/render";
 
 type ActionResponse = {
   status: "success" | "error";
@@ -113,4 +117,52 @@ export async function removeSubscriber(prevState: unknown, formData: FormData) {
   } else {
     return result;
   }
+}
+
+export async function sendNewPostEmail({
+  post,
+  to,
+  subject,
+  html,
+  text,
+}: {
+  post: Post;
+  to: string | string[];
+  subject?: string;
+  html?: string;
+  text?: string;
+}) {
+  const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
+  if (!region) throw new Error("AWS region not configured (AWS_REGION)");
+
+  const client = new SESClient({ region });
+
+  const from = process.env.SES_FROM_ADDRESS || process.env.EMAIL_FROM;
+  if (!from) throw new Error("SES_FROM_ADDRESS (or EMAIL_FROM) is not set");
+
+  const recipients = Array.isArray(to) ? to : [to];
+
+  const defaultSubject = subject ?? `New post published: ${post.title}`;
+
+  const defaultHtml =
+    html ??
+    (await render(React.createElement(PostNotificationEmail, { post }), {
+      pretty: true,
+    }));
+
+  const params = {
+    Source: from,
+    Destination: { ToAddresses: recipients },
+    Message: {
+      Subject: { Data: defaultSubject },
+      Body: {
+        Html: { Data: defaultHtml },
+        ...(text ? { Text: { Data: text } } : {}),
+      },
+    },
+  };
+
+  const command = new SendEmailCommand(params);
+  const res = await client.send(command);
+  return res.MessageId;
 }

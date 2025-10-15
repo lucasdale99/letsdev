@@ -23,8 +23,6 @@ export default function NotFound() {
             <p className="text-card-foreground mb-4">
               You might want to check out my blog for articles about software
               engineering, being a Christian, fatherhood, or entrepreneurship.
-              Or learn more about Strukt, the company I'm building with my
-              friend Matt.
             </p>
           </div>
 

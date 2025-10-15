@@ -13,6 +13,7 @@ import {
   updateBlogAction,
 } from "@/lib/handlers/blog/actions";
 import { useRouter } from "next/navigation";
+import { sendNewPostEmail } from "@/lib/handlers/subscribers/actions";
 
 const PostForm = ({ initialData }: { initialData: any }) => {
   const [state, action] = useFormState(

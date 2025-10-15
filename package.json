@@ -9,7 +9,7 @@
   },
   "packageManager": "pnpm@10.18.3",
   "dependencies": {
-    "@aws-sdk/client-sesv2": "^3.758.0",
+    "@aws-sdk/client-ses": "^3.910.0",
     "@aws-sdk/client-ssm": "^3.759.0",
     "@conform-to/react": "^1.2.2",
     "@conform-to/zod": "^1.2.2",
