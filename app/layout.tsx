@@ -1,4 +1,5 @@
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
@@ -49,7 +50,10 @@ export default function RootLayout({
         >
           <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              {children}
+              <Analytics />
+            </main>
             <Footer />
           </div>
         </ThemeProvider>
