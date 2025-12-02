@@ -2,9 +2,19 @@ import PortfolioCard from "./PortfolioCard";
 import { Suspense } from "react";
 import BlogListSkeleton from "./BlogListSkeleton";
 import { getPublishedBlogs } from "@/lib/db/actions/blog";
-import { IBlogList } from "@/types/blog/types";
 
 export const revalidate = 60;
+
+export interface IBlogList {
+  slug: string;
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  content: string;
+  views: number;
+  likes: number;
+}
 
 export default async function BlogList() {
   const blogs = await getPublishedBlogs();
