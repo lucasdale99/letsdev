@@ -8,13 +8,14 @@ import NotFound from "./not-found";
 export const revalidate = 60;
 
 interface BlogParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function BlogPost({ params }: BlogParams) {
-  const blog = await getBlog(params.slug);
+  const { slug } = await params;
+  const blog = await getBlog(slug);
 
   if (blog?.published === false) {
     return <NotFound />;
@@ -26,9 +27,9 @@ export default async function BlogPost({ params }: BlogParams) {
 
   return (
     <>
-      <BlogContent content={blog.content} slug={`${params.slug}`} />
+      <BlogContent content={blog.content} slug={slug} />
       <div className="flex-1 w-full max-w-4xl mx-auto p-6">
-        <Like postId={`${params.slug}`} initialLikes={blog.likes} />
+        <Like postId={slug} initialLikes={blog.likes} />
         <SubscriberForm />
       </div>
     </>

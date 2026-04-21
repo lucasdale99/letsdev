@@ -1,9 +1,8 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useActionState, useRef } from "react";
 import { Save, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { motion } from "framer-motion";
@@ -15,7 +14,7 @@ import {
 import { useRouter } from "next/navigation";
 
 const PostForm = ({ initialData }: { initialData: any }) => {
-  const [state, action] = useFormState(
+  const [state, action] = useActionState(
     initialData ? updateBlogAction : createBlogAction,
     undefined
   );

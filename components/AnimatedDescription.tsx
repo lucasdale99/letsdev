@@ -12,10 +12,10 @@ export const AnimatedDescription = ({
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % descriptions.length);
-    }, 2000); // Change text every 2 seconds
+    }, 2000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [descriptions.length]);
 
   return (
     <AnimatePresence mode="wait">

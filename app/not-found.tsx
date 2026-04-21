@@ -12,8 +12,8 @@ export default function NotFound() {
           </h1>
           <h2 className="text-4xl font-semibold">Page Not Found</h2>
           <p className="text-muted-foreground max-w-md">
-            Sorry, the page you're looking for doesn't exist or has been moved.
-            Let's get you back on track.
+            Sorry, the page you&apos;re looking for doesn&apos;t exist or has
+            been moved. Let&apos;s get you back on track.
           </p>
 
           <div className="w-full max-w-md border border-border rounded-lg p-6 backdrop-blur-sm bg-background/75">
@@ -23,7 +23,7 @@ export default function NotFound() {
             <p className="text-card-foreground mb-4">
               You might want to check out my blog for articles about software
               engineering, being a Christian, fatherhood, or entrepreneurship.
-              Or learn more about Strukt, the company I'm building with my
+              Or learn more about Strukt, the company I&apos;m building with my
               friend Matt.
             </p>
           </div>

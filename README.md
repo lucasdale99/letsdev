@@ -4,7 +4,7 @@ A modern blog platform built with Next.js, utilizing SST for infrastructure, Dri
 
 ## Prerequisites
 
-- Node.js 18+ installed
+- Node.js 20.9+ installed
 - AWS account configured
 - Neon PostgreSQL database created
 - pnpm package manager
@@ -39,6 +39,13 @@ NEXT_PUBLIC_URL=http://localhost:3000
 ```bash
 drizzle-kit generate
 drizzle-kit push
+```
+
+5. Build and run the production server:
+
+```bash
+pnpm build
+pnpm start
 ```
 
 ## Project Structure

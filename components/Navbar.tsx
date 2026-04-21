@@ -1,7 +1,5 @@
 import Link from "next/link";
-// import { ThemeToggle } from "./ThemeToggle";
 import Image from "next/image";
-import React from "react";
 import logo from "@/public/favicon-16x16.png";
 import { SocialIcons } from "./SocialIcons";
 
@@ -12,13 +10,12 @@ export default function Header() {
         <ol className="w-full flex items-center justify-between">
           <li>
             <Link className="flex items-center gap-4" href="/">
-              <Image src={logo} alt="Let's Dev Logo"></Image>
-              Let's Dev
+              <Image src={logo} alt="Let&apos;s Dev Logo" />
+              Let&apos;s Dev
             </Link>
           </li>
           <li className="flex items-center gap-4">
             <SocialIcons />
-            {/* <ThemeToggle /> */}
           </li>
         </ol>
       </div>

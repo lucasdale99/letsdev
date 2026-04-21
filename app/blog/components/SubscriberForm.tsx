@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRef } from "react";
@@ -12,16 +12,11 @@ import { motion } from "framer-motion";
 import { addSubscriber } from "@/lib/handlers/subscribers/actions";
 
 export default function SubscriberForm() {
-  const [state, action] = useFormState(addSubscriber, undefined);
+  const [state, action] = useActionState(addSubscriber, undefined);
   const ref = useRef<HTMLFormElement>(null);
 
-  const example = {
-    email: "lucas@strukt.io",
-  };
-
-  const [form, fields] = useForm({
+  const [form] = useForm({
     lastResult: state,
-    defaultValue: example,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: subscriberSchema });
     },

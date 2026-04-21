@@ -1,7 +1,4 @@
 import Link from "next/link";
-import { SocialIcons } from "./SocialIcons";
-import Image from "next/image";
-import logo from "@/public/favicon-16x16.png";
 
 export default function Footer() {
   return (
@@ -10,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex flex-col items-center md:items-start">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Let's Dev
+              &copy; {new Date().getFullYear()} Let&apos;s Dev
             </p>
           </div>
 

@@ -1,16 +1,12 @@
 import {
   Tailwind,
-  Button,
   Html,
   Head,
   Font,
-  Img,
   Container,
   Hr,
   Text,
   Section,
-  Row,
-  Column,
   Link,
   Body,
   Preview,
@@ -18,12 +14,17 @@ import {
 import config from "../../tailwind.config";
 import Subscribed from "./subscribed";
 import Unsubscribed from "./unsubscribed";
+
 export const url = (route: string): string => {
-  let base = process.env.NEXT_PUBLIC_URL ?? "";
+  const base = process.env.NEXT_PUBLIC_URL ?? "";
   return `${base}${route}`;
 };
 
-export const EmailWrapper = ({ children, preview, external = true }: any) => {
+export const EmailWrapper = ({
+  children,
+  preview,
+  external = true,
+}: any) => {
   return (
     <Html>
       <TailwindWrapper>
@@ -45,7 +46,9 @@ export const EmailWrapper = ({ children, preview, external = true }: any) => {
               {external && (
                 <>
                   <div>
-                    <Text className="font-extrabold text-xl">Let's Dev</Text>
+                    <Text className="font-extrabold text-xl">
+                      Let&apos;s Dev
+                    </Text>
                   </div>
                   <Hr />
                 </>
@@ -83,7 +86,7 @@ const TailwindWrapper = ({ children }: any) => {
 export const List = ({ data }: { data: object }) => {
   return (
     <>
-      {Object.entries(data).map(([key, val], v) => (
+      {Object.entries(data).map(([key, val]) => (
         <div key={key}>
           <Text className="font-bold mb-0">{key}</Text>
           <Text className="text-lg my-0">{val}</Text>

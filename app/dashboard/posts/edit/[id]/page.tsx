@@ -4,9 +4,10 @@ import PostForm from "../../../components/PostForm";
 export default async function EditPostPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const blog = await getBlogById(Number(params.id));
+  const { id } = await params;
+  const blog = await getBlogById(Number(id));
   return (
     <div className="bg-background w-full max-w-4xl mx-auto mt-16">
       <div className="rounded-lg border border-blue-500/20 bg-transparent p-6 transition-all duration-300 ease-in-out">

@@ -8,7 +8,7 @@ type ReactComponent =
 
 export const renderEmail = async (
   template: ReactComponent,
-  props: any
+  props: any,
 ): Promise<string> => {
   const html = await render(React.createElement(template, props), {
     pretty: true,
@@ -25,7 +25,7 @@ export async function mail(template: ReactComponent, mail: MailProps) {
   const send = async () =>
     await new SESv2Client().send(
       new SendEmailCommand({
-        FromEmailAddress: "lucas@strukt.io",
+        FromEmailAddress: "lucas@letusdev.io",
         Destination: {
           ToAddresses: mail.to || [],
         },
@@ -35,7 +35,7 @@ export async function mail(template: ReactComponent, mail: MailProps) {
             Body: { Html: { Data: await renderEmail(template, mail.props) } },
           },
         },
-      })
+      }),
     );
 
   return await send();

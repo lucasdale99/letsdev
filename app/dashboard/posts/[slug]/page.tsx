@@ -1,7 +1,12 @@
 import { getBlog } from "@/lib/db/actions/blog";
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const post = await getBlog(params.slug);
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getBlog(slug);
 
   if (!post) {
     return <div className="p-6">Post not found</div>;

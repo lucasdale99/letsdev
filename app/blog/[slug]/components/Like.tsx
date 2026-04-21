@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { likeBlog, unlikeBlog, hasUserLikedBlog } from "@/lib/db/actions/blog";
 import { getAnonymousId } from "@/lib/utils/getAnonymousId";
@@ -10,45 +10,41 @@ interface LikeProps {
   initialLikes?: number;
 }
 
-// Confetti component
-const Confetti = () => {
-  const confettiColors = [
-    "#FFC700",
-    "#FF0055",
-    "#0099FF",
-    "#22CC88",
-    "#FF8A00",
-  ];
+const confettiColors = ["#FFC700", "#FF0055", "#0099FF", "#22CC88", "#FF8A00"];
+const confettiParticles = Array.from({ length: 50 }, (_, index) => ({
+  id: index,
+  color: confettiColors[index % confettiColors.length],
+  x: Math.cos(index * 0.7) * (80 + (index % 5) * 18),
+  y: Math.sin(index * 0.9) * (80 + (index % 7) * 14),
+  scale: 0.25 + (index % 4) * 0.18,
+  duration: 0.6 + (index % 5) * 0.18,
+}));
 
-  // Create 50 confetti particles
+const Confetti = () => {
   return (
     <div className="absolute inset-0 pointer-events-none">
-      {Array.from({ length: 50 }).map((_, i) => {
-        const color =
-          confettiColors[Math.floor(Math.random() * confettiColors.length)];
-        return (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full"
-            style={{
-              backgroundColor: color,
-              top: "50%",
-              left: "50%",
-            }}
-            initial={{ scale: 0 }}
-            animate={{
-              x: Math.random() * 300 - 150,
-              y: Math.random() * 300 - 150,
-              scale: Math.random() * 0.8 + 0.2,
-              opacity: [1, 0.8, 0],
-            }}
-            transition={{
-              duration: Math.random() * 1 + 0.5,
-              ease: "easeOut",
-            }}
-          />
-        );
-      })}
+      {confettiParticles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute w-2 h-2 rounded-full"
+          style={{
+            backgroundColor: particle.color,
+            top: "50%",
+            left: "50%",
+          }}
+          initial={{ scale: 0 }}
+          animate={{
+            x: particle.x,
+            y: particle.y,
+            scale: particle.scale,
+            opacity: [1, 0.8, 0],
+          }}
+          transition={{
+            duration: particle.duration,
+            ease: "easeOut",
+          }}
+        />
+      ))}
     </div>
   );
 };
@@ -76,23 +72,20 @@ export default function Like({ postId, initialLikes = 0 }: LikeProps) {
 
     try {
       if (userChoice === "like") {
-        // User is unliking
         setLikes((prev) => prev - 1);
         setUserChoice(null);
         await unlikeBlog(postId, anonymousId);
       } else {
-        // User is liking
         setLikes((prev) => prev + 1);
         setUserChoice("like");
         setShowConfetti(true);
         await likeBlog(postId, anonymousId);
 
-        // Hide confetti after animation completes
         setTimeout(() => setShowConfetti(false), 1500);
       }
     } catch (error) {
       console.error("Error handling like:", error);
-      // Revert UI state if API call fails
+
       if (userChoice === "like") {
         setLikes((prev) => prev + 1);
         setUserChoice("like");
@@ -145,7 +138,7 @@ export default function Like({ postId, initialLikes = 0 }: LikeProps) {
           }}
         >
           <AnimatePresence>{showConfetti && <Confetti />}</AnimatePresence>
-          👍 {likes}
+          {"\uD83D\uDC4D"} {likes}
         </motion.button>
       </div>
     </div>

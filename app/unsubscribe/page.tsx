@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { removeSubscriber } from "@/lib/handlers/subscribers/actions";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRef } from "react";
 import { subscriberSchema } from "@/lib/handlers/subscribers/subscriber.schema";
 
 export default function Unsubscribe() {
-  const [state, action] = useFormState(removeSubscriber, undefined);
+  const [state, action] = useActionState(removeSubscriber, undefined);
   const ref = useRef<HTMLFormElement>(null);
 
   const [form, fields] = useForm({

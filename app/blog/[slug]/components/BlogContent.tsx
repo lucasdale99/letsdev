@@ -12,7 +12,6 @@ import { capitalizeAndRemoveDashes } from "@/utils/capitilizeLinks";
 import { Home } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { motion, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
 
 interface BlogContentProps {
   content: string;
@@ -20,27 +19,20 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ content, slug }: BlogContentProps) {
-  const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <>
-      {mounted && (
-        <motion.div
-          className="fixed top-16 left-0 right-0 z-[999]"
-          style={{
-            scaleX: scrollYProgress,
-            position: "fixed",
-            height: "4px",
-            backgroundColor: "rgb(234, 179, 8)",
-            transformOrigin: "0%",
-          }}
-        />
-      )}
+      <motion.div
+        className="fixed top-16 left-0 right-0 z-[999]"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          height: "4px",
+          backgroundColor: "rgb(234, 179, 8)",
+          transformOrigin: "0%",
+        }}
+      />
       <div className="flex-1 w-full max-w-4xl mx-auto p-6">
         <Breadcrumb className="mb-6">
           <BreadcrumbList>
