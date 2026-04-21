@@ -16,8 +16,9 @@ import Subscribed from "./subscribed";
 import Unsubscribed from "./unsubscribed";
 
 export const url = (route: string): string => {
-  const base = process.env.NEXT_PUBLIC_URL ?? "";
-  return `${base}${route}`;
+  const base = process.env.NEXT_PUBLIC_URL?.replace(/\/$/, "") ?? "";
+  const path = route.startsWith("/") ? route : `/${route}`;
+  return `${base}${path}`;
 };
 
 export const EmailWrapper = ({
@@ -58,7 +59,7 @@ export const EmailWrapper = ({
                 <>
                   <Hr />
                   <Link
-                    href={url("https://letusdev.io/unsubscribe")}
+                    href={url("/unsubscribe")}
                     className="flex justify-end items-center"
                   >
                     <Text className="text-gray-400 text-xs leading-4 underline">

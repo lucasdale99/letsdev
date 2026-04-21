@@ -21,11 +21,18 @@ type MailProps = {
   to?: string[];
   props?: any;
 };
+
+const sesClient = new SESv2Client({
+  region: process.env.AWS_REGION ?? process.env.AWS_DEFAULT_REGION,
+});
+
+const fromEmailAddress = process.env.SES_FROM_EMAIL ?? "lucas@letusdev.io";
+
 export async function mail(template: ReactComponent, mail: MailProps) {
-  const send = async () =>
-    await new SESv2Client().send(
+  try {
+    return await sesClient.send(
       new SendEmailCommand({
-        FromEmailAddress: "lucas@letusdev.io",
+        FromEmailAddress: fromEmailAddress,
         Destination: {
           ToAddresses: mail.to || [],
         },
@@ -37,6 +44,14 @@ export async function mail(template: ReactComponent, mail: MailProps) {
         },
       }),
     );
+  } catch (error) {
+    if (error instanceof Error && error.name === "CredentialsProviderError") {
+      throw new Error(
+        "AWS SES credentials are not configured. Set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_REGION locally, or run with an IAM role that can send SES email.",
+        { cause: error },
+      );
+    }
 
-  return await send();
+    throw error;
+  }
 }

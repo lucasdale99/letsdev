@@ -32,6 +32,10 @@ cp .env.local
 ```bash
 DATABASE_URL=your_neon_postgres_connection_string
 NEXT_PUBLIC_URL=http://localhost:3000
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
+SES_FROM_EMAIL=lucas@letusdev.io
 ```
 
 4. Generate and push Drizzle ORM schema:
