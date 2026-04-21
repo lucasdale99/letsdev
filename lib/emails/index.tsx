@@ -15,17 +15,7 @@ import config from "../../tailwind.config";
 import Subscribed from "./subscribed";
 import Unsubscribed from "./unsubscribed";
 
-export const url = (route: string): string => {
-  const base = process.env.NEXT_PUBLIC_URL?.replace(/\/$/, "") ?? "";
-  const path = route.startsWith("/") ? route : `/${route}`;
-  return `${base}${path}`;
-};
-
-export const EmailWrapper = ({
-  children,
-  preview,
-  external = true,
-}: any) => {
+export const EmailWrapper = ({ children, preview, external = true }: any) => {
   return (
     <Html>
       <TailwindWrapper>
@@ -59,7 +49,7 @@ export const EmailWrapper = ({
                 <>
                   <Hr />
                   <Link
-                    href={url("/unsubscribe")}
+                    href={"/unsubscribe"}
                     className="flex justify-end items-center"
                   >
                     <Text className="text-gray-400 text-xs leading-4 underline">
