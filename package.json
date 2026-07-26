@@ -33,7 +33,7 @@
     "geist": "^1.7.0",
     "lucide-react": "^0.427.0",
     "next": "^16.2.6",
-    "next-auth": "5.0.0-beta.30",
+    "next-auth": "5.0.0-beta.32",
     "next-themes": "^0.3.0",
     "postcss": "8.4.33",
     "react": "^19.2.6",
